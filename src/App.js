@@ -41,9 +41,9 @@ function App() {
     setPokemonList(pokemonListElement);
     setLoadMoreButton(loadMoreButtonElement);
 
-    loadPokemonItems(offset, limit);
+    if (pokemonListElement && loadMoreButtonElement) {
+      loadPokemonItems(offset, limit);
 
-    if (loadMoreButtonElement) {
       loadMoreButtonElement.addEventListener('click', () => {
         offset += limit;
         const qtdRecordsWithNextPage = offset + limit;
@@ -60,7 +60,8 @@ function App() {
         }
       });
     }
-  }, []);
+
+  }, [pokemonList, loadMoreButton]);
 
   return (
     <>
